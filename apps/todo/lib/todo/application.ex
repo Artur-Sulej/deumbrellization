@@ -7,7 +7,10 @@ defmodule Todo.Application do
 
   @impl true
   def start(_type, _args) do
+    topologies = Application.get_env(:libcluster, :topologies)
+
     children = [
+      {Cluster.Supervisor, [topologies, [name: Todo.ClusterSupervisor]]},
       # Start the Ecto repository
       Todo.Repo
       # Start the PubSub system
