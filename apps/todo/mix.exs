@@ -34,7 +34,8 @@ defmodule Todo.MixProject do
     [
       {:ecto_sql, "~> 3.6"},
       {:postgrex, ">= 0.0.0"},
-      {:jason, "~> 1.2"}
+      {:jason, "~> 1.2"},
+      {:libcluster, "~> 3.3"}
     ]
   end
 

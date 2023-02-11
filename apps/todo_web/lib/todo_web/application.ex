@@ -7,7 +7,10 @@ defmodule TodoWeb.Application do
 
   @impl true
   def start(_type, _args) do
+    topologies = Application.get_env(:libcluster, :topologies)
+
     children = [
+      {Cluster.Supervisor, [topologies, [name: TodoWeb.ClusterSupervisor]]},
       # Start the Telemetry supervisor
       TodoWeb.Telemetry,
       # Start the Endpoint (http/https)
