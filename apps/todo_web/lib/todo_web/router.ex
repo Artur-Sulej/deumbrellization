@@ -18,6 +18,7 @@ defmodule TodoWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/tasks", TaskController
   end
 
   # Other scopes may use custom stacks.
