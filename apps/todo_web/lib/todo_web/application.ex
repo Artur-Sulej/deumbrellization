@@ -11,6 +11,7 @@ defmodule TodoWeb.Application do
       # Start the Telemetry supervisor
       TodoWeb.Telemetry,
       # Start the Endpoint (http/https)
+      {Phoenix.PubSub, name: TodoWeb.PubSub},
       TodoWeb.Endpoint
       # Start a worker by calling: TodoWeb.Worker.start_link(arg)
       # {TodoWeb.Worker, arg}
