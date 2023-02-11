@@ -9,9 +9,8 @@ defmodule Todo.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      Todo.Repo,
+      Todo.Repo
       # Start the PubSub system
-      {Phoenix.PubSub, name: Todo.PubSub}
       # Start a worker by calling: Todo.Worker.start_link(arg)
       # {Todo.Worker, arg}
     ]

@@ -5,10 +5,6 @@ defmodule Todo.MixProject do
     [
       app: :todo,
       version: "0.1.0",
-      build_path: "../../_build",
-      config_path: "../../config/config.exs",
-      deps_path: "../../deps",
-      lockfile: "../../mix.lock",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -36,7 +32,6 @@ defmodule Todo.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix_pubsub, "~> 2.0"},
       {:ecto_sql, "~> 3.6"},
       {:postgrex, ">= 0.0.0"},
       {:jason, "~> 1.2"}
