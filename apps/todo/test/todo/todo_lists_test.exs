@@ -50,10 +50,5 @@ defmodule Todo.TodoListsTest do
       assert {:ok, %Task{}} = TodoLists.delete_task(task)
       assert_raise Ecto.NoResultsError, fn -> TodoLists.get_task!(task.id) end
     end
-
-    test "change_task/1 returns a task changeset" do
-      task = task_fixture()
-      assert %Ecto.Changeset{} = TodoLists.change_task(task)
-    end
   end
 end
