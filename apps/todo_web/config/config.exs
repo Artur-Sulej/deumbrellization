@@ -1,5 +1,10 @@
 import Config
 
+config :todo_web,
+  nodes: [
+    todo: [short_name: "todo"]
+  ]
+
 # Configures the endpoint
 config :todo_web, TodoWeb.Endpoint,
   url: [host: "localhost"],
