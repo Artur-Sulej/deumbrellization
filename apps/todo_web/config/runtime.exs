@@ -37,4 +37,18 @@ if config_env() == :prod do
   #
   # Then you can assemble a release by calling `mix release`.
   # See `mix help release` for more information.
+
+  # Fly.io docs: https://fly.io/docs/elixir/the-basics/clustering/#adding-libcluster
+  config :libcluster,
+    debug: true,
+    topologies: [
+      fly6pn: [
+        strategy: Cluster.Strategy.DNSPoll,
+        config: [
+          polling_interval: 5_000,
+          query: "deumbrellization-todo.internal",
+          node_basename: "deumbrellization-todo"
+        ]
+      ]
+    ]
 end

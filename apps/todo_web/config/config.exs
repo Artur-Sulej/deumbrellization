@@ -2,7 +2,7 @@ import Config
 
 config :todo_web,
   nodes: [
-    todo: [short_name: "todo"]
+    todo: [short_name: "deumbrellization-todo"]
   ]
 
 # Configures the endpoint

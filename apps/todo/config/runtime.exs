@@ -21,4 +21,18 @@ if config_env() == :prod do
     url: database_url,
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
     socket_options: maybe_ipv6
+
+  # Fly.io docs: https://fly.io/docs/elixir/the-basics/clustering/#adding-libcluster
+  config :libcluster,
+    debug: true,
+    topologies: [
+      fly6pn: [
+        strategy: Cluster.Strategy.DNSPoll,
+        config: [
+          polling_interval: 5_000,
+          query: "deumbrellization-todo-web.internal",
+          node_basename: "deumbrellization-todo-web"
+        ]
+      ]
+    ]
 end

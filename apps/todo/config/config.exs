@@ -1,5 +1,10 @@
 import Config
 
+config :todo,
+  nodes: [
+    todo_web: [short_name: "deumbrellization-todo-web"]
+  ]
+
 # Configure Mix tasks and generators
 config :todo,
   ecto_repos: [Todo.Repo]
