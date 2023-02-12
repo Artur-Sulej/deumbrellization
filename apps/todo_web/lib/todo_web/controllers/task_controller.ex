@@ -2,7 +2,7 @@ defmodule TodoWeb.TaskController do
   use TodoWeb, :controller
 
   import RemoteCallMacro
-  @node :"todo@MacBook-Pro-3"
+  @node Application.compile_env!(:todo_web, [:nodes, :todo, :short_name])
 
   def index(conn, _params) do
     tasks =
