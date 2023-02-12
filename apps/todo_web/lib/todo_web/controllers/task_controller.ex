@@ -1,16 +1,23 @@
 defmodule TodoWeb.TaskController do
   use TodoWeb, :controller
 
+  import RemoteCallMacro
   @node :"todo@MacBook-Pro-3"
 
   def index(conn, _params) do
-    tasks = :rpc.call(@node, Todo.TodoLists, :list_tasks, [])
+    tasks =
+      remote(@node) do
+        Todo.TodoLists.list_tasks()
+      end
 
     render(conn, "index.html", tasks: tasks)
   end
 
   def create(conn, params) do
-    result = :rpc.call(@node, Todo.TodoLists, :create_task, [params])
+    result =
+      remote(@node) do
+        Todo.TodoLists.create_task(params)
+      end
 
     case result do
       {:ok, _task} ->
@@ -25,7 +32,10 @@ defmodule TodoWeb.TaskController do
   end
 
   def delete(conn, %{"id" => id}) do
-    {:ok, _task} = :rpc.call(@node, Todo.TodoLists, :delete_task, [id])
+    {:ok, _task} =
+      remote(@node) do
+        Todo.TodoLists.delete_task(id)
+      end
 
     conn
     |> put_flash(:info, "Task deleted successfully.")
